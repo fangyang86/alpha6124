@@ -24,6 +24,9 @@
     <ClInclude Include="CMyLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CTDX.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -33,6 +36,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CMyLib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CTDX.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
