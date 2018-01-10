@@ -56,7 +56,7 @@ int CMyLib::gpsParse(char *fn)
 int CMyLib::gpsPrint()
 {
 	char buf[200];
-	_getcwd(buf, 100);
+	getcwd(buf, 100);
 	buf[199] = 0;
 	printf("current dir: %s\n", buf);
 
