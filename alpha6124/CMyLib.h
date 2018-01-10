@@ -5,6 +5,8 @@ struct st_gps {
 	int nField;
 	char bufLine[200];
 	int nLen;
+	double x;
+	double y;
 };
 class CMyLib
 {
@@ -16,6 +18,7 @@ public:
 	int test(int n);
 
 	void initGPS();
+	int gpsParse1(char c);
 	int gpsParse(char *fn);
 	int gpsPrint();
 };

@@ -21,6 +21,14 @@ void CMyLib::initGPS()
 	m_gps.nField = 0;
 	m_gps.nLen = 0;
 	m_gps.nValidChar = 0;
+	m_gps.x = 0.;
+	m_gps.y = 0.;
+}
+
+int CMyLib::gpsParse1(char c)
+{
+
+	return 0;
 }
 
 int CMyLib::gpsParse(char *fn)
@@ -36,7 +44,7 @@ int CMyLib::gpsParse(char *fn)
 	while (!feof(fp))
 	{
 		c = fgetc(fp);
-		printf("%c", c);
+		//printf("%c", c);
 
 	}
 
@@ -53,6 +61,7 @@ int CMyLib::gpsPrint()
 	printf("current dir: %s\n", buf);
 
 	printf("state:%d \n", m_gps.nState);
+	printf(" x: %.4f  y: %.4f \n", m_gps.x, m_gps.y);
 
 	return 0;
 }
