@@ -30,5 +30,6 @@ public:
 	~CMyST();
 	int testTDX(char *fname);
 	int testRead(char * fname);
+	int testTDX1(char* fname);
 };
 
