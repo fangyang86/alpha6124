@@ -31,5 +31,7 @@ public:
 	int testTDX(char *fname);
 	int testRead(char * fname);
 	int testTDX1(char* fname);
+	int findFile(char * fname);
+	int getREC1(TCHAR * fname);
 };
 

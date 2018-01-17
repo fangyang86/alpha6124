@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "CMyST.h"
+#include <direct.h>
+#include <Windows.h>
 
 
 CMyST::CMyST()
@@ -20,7 +22,7 @@ int CMyST::testTDX(char *fname)
 	int m;
 
 	printf("test\n");
-	fp = fopen("r:\\sz000725.day", "rb");
+	fp = fopen("X:\\new_tdx_test\\vipdoc\\sz\\lday\\sz000725.day", "rb");
 	if (fp == NULL) {
 		printf("open file error\nexit\n");
 		return -1;
@@ -50,7 +52,7 @@ int CMyST::testTDX1(char* fname)
 	int m;
 
 	printf("test\n");
-	fp = fopen("r:\\sz000725.day", "rb");
+	fp = fopen("X:\\new_tdx_test\\vipdoc\\sz\\lday\\sz000725.day", "rb");
 	//fp = fopen("r:\\sz399006.lc1", "rb");
 	if (fp == NULL) {
 		printf("open file error\nexit\n");
@@ -63,5 +65,58 @@ int CMyST::testTDX1(char* fname)
 	}
 
 	fclose(fp);
+	return 0;
+}
+
+
+int CMyST::findFile(char * fname)
+{
+	int n = 0;
+	WIN32_FIND_DATA ffd;
+	//LARGE_INTEGER filesize;
+	TCHAR szDir[MAX_PATH];
+	char strName[110];
+	//char szDir[200];
+	//size_t length_of_arg;
+	HANDLE hFind = INVALID_HANDLE_VALUE;
+	//DWORD dwError = 0;
+
+	//_tcscpy(szDir, _T("x:\\*.*"));
+	//_tcscpy(szDir, _T("X:\\new_tdx_test\\vipdoc\\sz\\lday\\*.day"));
+	//_tcscpy(szDir, _T("X:\\new_tdx_test\\vipdoc\\sz\\lday\\sz00*.day"));
+	_tcscpy(szDir, _T("X:\\new_tdx_test\\vipdoc\\sh\\lday\\sh60*.day"));
+	hFind = FindFirstFile(szDir, &ffd);
+	if (INVALID_HANDLE_VALUE == hFind){
+		return -1;
+	}
+
+	do
+	{
+		if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+			continue;
+		//{
+			//_tprintf(TEXT(" %s <DIR>\n"), ffd.cFileName);
+		//}
+		else{
+			n++;
+			//_tprintf(TEXT(" %s \n"), ffd.cFileName);
+			//strcpy_s(strName,100, ffd.cFileName);
+			//_tprintf(TEXT("    ......... %s \n"), strName);
+			getREC1(ffd.cFileName);
+		}
+	} while (FindNextFile(hFind, &ffd) != 0);
+
+	FindClose(hFind);
+	printf("\n%d files found\n", n);
+
+	return 0;
+}
+
+
+int CMyST::getREC1(TCHAR * fname)
+{
+	char buf[200];
+	_tprintf(TEXT(" get rec1 : %s\n"), fname);
+	
 	return 0;
 }
